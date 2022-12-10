@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointAround: {x: 0, y: 0, z: 0}
+  startObject: {fileID: 1758996798}
 --- !u!1 &544483091
 GameObject:
   m_ObjectHideFlags: 0

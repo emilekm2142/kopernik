@@ -6,15 +6,17 @@ public class PlanetService : MonoBehaviour
 {
 
     public Vector3 pointAround;
+    public GameObject startObject;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        pointAround = startObject.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       // Camera.main.transform.position = pointAround;
     }
 }

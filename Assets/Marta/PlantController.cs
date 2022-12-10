@@ -23,6 +23,8 @@ public class PlantController : MonoBehaviour
     {
         planetService.pointAround = this.gameObject.transform.position;
         angel = angel * -1;
+        // Camera.main.transform.position = this.gameObject.transform.position;
+        // Camera.main.transform.parent = this.gameObject.transform;
     }
     
 
