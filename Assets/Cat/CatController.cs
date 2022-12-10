@@ -8,6 +8,7 @@ public class CatController : MonoBehaviour
     public CatMoodService catMoodService;
     public CatMouth catMouth;
     public CatEye catEye;
+    public WhimEnum catWhim;
     
     private void OnMouseDown()
     {
@@ -16,5 +17,9 @@ public class CatController : MonoBehaviour
         
         if(catEye != CatEye.NONE)
             catMoodService.SetEye(catEye);
+        
+        if(catWhim != WhimEnum.None)
+            catMoodService.SetWhim(catWhim);
+        
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 public class CatMoodService : MonoBehaviour
@@ -8,6 +9,7 @@ public class CatMoodService : MonoBehaviour
 
     public GameObject eyeGameObject;
     public GameObject mouthGameObject;
+    public GameObject whimGameObject;
     
     public Sprite eyeCuteSprite;
     public Sprite eyeShockSprite;
@@ -17,6 +19,10 @@ public class CatMoodService : MonoBehaviour
     public Sprite mouthNeutralSprite;
     public Sprite mouthSadSprite;
    
+    public Sprite whimAppleSprite;
+    public Sprite whimTreeSprite;
+    public Sprite whimMushroomSprite;
+    
     public int coutdownSecond = 5;
 
     [HideInInspector]
@@ -78,6 +84,22 @@ public class CatMoodService : MonoBehaviour
                 break;
         }
         StartTimer();
+    }
+
+    public virtual void SetWhim(WhimEnum _whimEnum)
+    {
+        switch (_whimEnum)
+        {
+            case WhimEnum.Apple:
+                whimGameObject.GetComponent<SpriteRenderer>().sprite = whimAppleSprite;
+                break;
+            case WhimEnum.Mushrom:
+                whimGameObject.GetComponent<SpriteRenderer>().sprite = whimMushroomSprite;
+                break;
+            case WhimEnum.TreeSapling:
+                whimGameObject.GetComponent<SpriteRenderer>().sprite = whimTreeSprite;
+                break;
+        }
     }
     
 }
