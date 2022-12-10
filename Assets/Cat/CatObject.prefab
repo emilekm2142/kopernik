@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 353452659584165392}
   - component: {fileID: 353452659584165423}
   - component: {fileID: 353452659584165422}
+  - component: {fileID: 5986062431814403095}
   m_Layer: 0
   m_Name: CatObject
   m_TagString: Untagged
@@ -52,6 +53,7 @@ MonoBehaviour:
   cuteSprite: {fileID: 21300000, guid: b2b4558b733df418dbe1b75156186fe9, type: 3}
   shockSprite: {fileID: 21300000, guid: c38220dc238824ef2b7570e42b6cd86b, type: 3}
   angrySprite: {fileID: 21300000, guid: 861629cdfd40a41149cc9a8954c4086c, type: 3}
+  secToCute: 5
 --- !u!114 &353452659584165422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +68,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeRange: {x: 1, y: 2}
   shakeStrength: {x: 1, y: 1}
+--- !u!114 &5986062431814403095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353452659584165421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2c091db9b204267a1721e09ab64e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetTypes: 02000000
 --- !u!1 &353452660262285164
 GameObject:
   m_ObjectHideFlags: 0
