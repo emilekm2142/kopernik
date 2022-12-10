@@ -49,6 +49,10 @@ public class CelestialBody : MonoBehaviour
         return newtonsForce;
     }
 
+    public Vector2 GetVelocity()
+    {
+	    return this.trajectoryPoints[0].velocity;
+    }
     public Vector2 getDirectionalForce(Vector2 position, float mass)
     {
         var dstX = transform.position.x - position.x;

@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Slingshoot : MonoBehaviour
 {
+    public long lastTouchedTimestamp = 0;
     public int draggedCount = 0;
     public float maxForce = 10f;
     public float maxDistance = 10f;
@@ -24,13 +26,13 @@ public class Slingshoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) &&LevelManager.Current.isPaused)
         {
             isBeingDragged = false;
             LevelManager.Current.isAnyBeingDragged = false;
             celestialBody.RecalculateTrajectory(true);
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && LevelManager.Current.isPaused)
         {
             if (LevelManager.Current.isAnyBeingDragged && isBeingDragged)
             {
@@ -38,10 +40,11 @@ public class Slingshoot : MonoBehaviour
                 LevelManager.Current.isAnyBeingDragged = false;
                 LevelManager.Current.Resume();
                 draggedCount++;
+                Camera.main.DOShakePosition(0.4f, 0.4f, 10, 90f, true);
             }
         }
 
-        if (Input.GetMouseButton(0) && isBeingDragged)
+        if (Input.GetMouseButton(0) && isBeingDragged && LevelManager.Current.isPaused )
         {
             //get mouse world position
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -68,14 +71,15 @@ public class Slingshoot : MonoBehaviour
             LevelManager.Current.arrow.transform.position = startMousePos;
             //set arrow rotation
             LevelManager.Current.arrow.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
-            
+            lastTouchedTimestamp = DateTime.Now.Ticks;
+          
             celestialBody.RecalculateTrajectory(true, x,y, true);
         }
     }
 
     private void OnMouseDown()
     {
-        if (LevelManager.Current.isAnyBeingDragged == false)
+        if (LevelManager.Current.isAnyBeingDragged == false && LevelManager.Current.isPaused)
         {
             startMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             isBeingDragged = true;

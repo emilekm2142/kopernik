@@ -5,10 +5,23 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using DG.Tweening;
+using UnityEngine.Rendering;
+
+[System.Serializable]
+public class TypeToObject
+{
+	public PlanetTypes type;
+	public GameObject obj;
+}
 public class LevelManager : MonoSingleton<LevelManager>
 {
+	public Volume bloomVolume;
+	public GameObject cat;
+	private List<GameObject> catsList = new List<GameObject>();
+	public int currentCat = 0;
+	public bool isColliding = false;
 	public GameObject arrow;
-	public List<GameObject> basicPlanets = new List<GameObject>();
+	public List<TypeToObject> basicPlanets = new List<TypeToObject>();
 	public List<LinePoint> spawnPoints = new List<LinePoint>();
 	public List<Tuple<LinePoint, GameObject>> planetsSpawned = new List<Tuple<LinePoint, GameObject>>();
 	public bool isAnyBeingDragged = false;
@@ -44,6 +57,12 @@ public class LevelManager : MonoSingleton<LevelManager>
 			
 	}
 
+    public void SpawnNewCat(GameObject lastCat)
+    {
+	    var catPrefab = catsList[currentCat];
+	    cat = Instantiate(catPrefab, lastCat.transform.position, Quaternion.identity);
+	    currentCat++;
+    }
 	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
@@ -81,7 +100,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 	{
 		UpdateCelestialBodiesListFromScene();
 		RecalculateTrajectory();
-
+		cat = FindObjectOfType<CatMovement>().gameObject;
 		StartCoroutine(SpawningCoroutine());
 		//GameObject.FindObjectOfType<GameManager>().ShowEndCampaignRewardScreen(100);
 
@@ -92,7 +111,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 		while (true)
 		{
 			//get random planet
-			GameObject planet = basicPlanets[Random.Range(0, basicPlanets.Count)];
+			GameObject planet = basicPlanets[Random.Range(0, basicPlanets.Count)].obj;
 			LinePoint spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
 			while (!planetsSpawned.Select(x => x.Item1).All(x => spawnPoints.Contains(x)) && planetsSpawned.Select(x=>x.Item1).Contains(spawnPoint))
 			{
