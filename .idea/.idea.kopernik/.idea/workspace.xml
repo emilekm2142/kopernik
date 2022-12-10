@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30123fc6-775e-418b-bbef-c91af63263d8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Cat/CatEyeEnum.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Cat/CatEyeEnum.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Cat.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cat.unity" afterDir="false" />
-    </list>
+    <list default="true" id="30123fc6-775e-418b-bbef-c91af63263d8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,7 +86,7 @@
       <updated>1670669668099</updated>
       <workItem from="1670669671604" duration="116000" />
       <workItem from="1670669804452" duration="57000" />
-      <workItem from="1670669920872" duration="6085000" />
+      <workItem from="1670669920872" duration="6927000" />
     </task>
     <servers />
   </component>
