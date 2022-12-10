@@ -44,31 +44,24 @@ public class LevelManager : MonoSingleton<LevelManager>
 
 	void Update()
 	{
-		if (passed < delaySeconds && isPaused)
-		{
-			passed += Time.deltaTime;
-			isPaused = true;
-		}
-
-		if (passed > delaySeconds)
-		{
-			isPaused = false;
-		}
+		
 		
 
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-				
-				Pause();
+			Pause();
+		}
 
-
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			TogglePause();
 		}
 
 		if (Input.GetKeyDown(KeyCode.A))
 		{
-			//get random position in distance 4 from vector2
-			Vector2 randomPosition = Random.insideUnitCircle * 4;
-			this.SpawnNewPlanet(planetPrefab, (Vector2)FindObjectOfType<Sun>().transform.position + new Vector2(randomPosition.x, randomPosition.y));
+			//get random spawn point
+			LinePoint spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+			this.SpawnNewPlanet(planetPrefab, spawnPoint);
 		}
 
 		if (   (Input.GetKeyDown("space")||Input.GetKeyDown(KeyCode.Pause)) && !Application.isEditor)
@@ -111,21 +104,32 @@ public class LevelManager : MonoSingleton<LevelManager>
 		// Return the velocity vector
 		return projectedDirection * orbitalVelocity;
 	}
-
-	public void SpawnNewPlanet(GameObject prefab, Vector2 position){
-		Sun sun = GameObject.FindObjectOfType<Sun>();
-		GameObject newPlanet = Instantiate(prefab, position, Quaternion.identity);
-		newPlanet.transform.position = position;
-		newPlanet.GetComponent<StartVelocity>().startVelocity = CalculateOrbitalVelocity(
-			(float)sun.GetComponent<CelestialBody>().calculateThisBodyAttraction(newPlanet),
-			sun.gameObject.transform.position, position, sun.GetComponent<CelestialBody>().mass,
-			(float)GameManager.Current.gravityForceScale)*10;
-		UpdateCelestialBodiesListFromScene();
-		newPlanet.GetComponent<CelestialBody>().RecalculateTrajectory(true);
-		
+	public Vector2 GetPointOnUnitCircleCircumference()
+	{
+		float randomAngle = Random.Range(0f, Mathf.PI * 2f);
+		return new Vector2(Mathf.Sin(randomAngle), Mathf.Cos(randomAngle)).normalized;
 	}
+	public void SpawnNewPlanet(GameObject prefab, LinePoint lp)
+	{
+		//instatiate planet
+		//get random position on a rim of a circle
+		
+		var sun = FindObjectOfType<Sun>();
+		Vector2 randomPosition = GetPointOnUnitCircleCircumference() * Vector2.Distance(sun.transform.position, lp.pos);
+		GameObject planet = Instantiate(prefab, lp.pos, Quaternion.identity);
+		//add to list
+		planetsSpawned.Add(new Tuple<LinePoint, GameObject>(lp, planet));
+		//get vector of magnitude lp.velocity.magnitude that crosses through lp.pos and is parrarel to sun.transform.position
+		Vector2 velocity = (lp.pos - (Vector2)sun.transform.position).normalized * lp.velocity.magnitude;
+		planet.GetComponent<StartVelocity>().startVelocity = lp.velocity;
+		this.celestialBodies.Add(planet.GetComponent<CelestialBody>());
+		planet.GetComponent<CelestialBody>().RecalculateTrajectory(true);
 
-	public void Win()
+	}
+	
+	
+
+		public void Win()
 	{
 		
 
@@ -145,6 +149,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 
 	public void Pause(bool showTrajectory = true, bool countAsPause = true)
 	{
+		Debug.Log("Pausing");
 		isPaused = true;
 
 	}
@@ -156,7 +161,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 
 	public void TogglePause()
 	{
-		
+		Debug.Log("toggle pause");
 		if (!isPaused)
 		{
 			

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+//make this serializable
+[System.Serializable]
 public class LinePoint
 {
 	public Vector2 pos;
@@ -15,6 +17,7 @@ public class CelestialBody : MonoBehaviour
     public float precalculatedMovementTime = 3f;
     public bool doesMove = true;
     public double multiplier = 1;
+    public bool significant = false;
     public float mass = 1;
     public int stepInTrajectoryMovement = 0;
     private Rigidbody2D _rigidbody;
@@ -92,7 +95,11 @@ public class CelestialBody : MonoBehaviour
 	    Vector2 force= new Vector2(0,0);
 	    foreach (var body in LevelManager.Current.celestialBodies)
 	    {
-				
+		    if (!body.significant)
+		    {
+			    continue;
+		    }
+
 		    if ( body != this && body!=null )
 		    {
 			    var forceExertedOnThis = body.getDirectionalForce(position, mass);
@@ -141,10 +148,15 @@ public class CelestialBody : MonoBehaviour
 
 		while (time <= precalculatedMovementTime)
 		{
+			
 			i++;
 			Vector2 force= new Vector2(0,0);
 			foreach (var body in LevelManager.Current.celestialBodies)
 			{
+				if (!body.significant)
+				{
+					continue;
+				}
 				
 				if ( body != this && body!=null )
 				{

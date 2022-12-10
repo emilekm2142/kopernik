@@ -476,6 +476,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetPrefab: {fileID: 1804878434}
+  spawnPoints:
+  - pos: {x: 0, y: 2.6}
+    velocity: {x: 2.2, y: 0}
   passed: 0
   delaySeconds: 1
   isPaused: 1
@@ -598,6 +601,7 @@ MonoBehaviour:
   precalculatedMovementTime: 3
   doesMove: 0
   multiplier: 1
+  significant: 1
   mass: 50
   stepInTrajectoryMovement: 0
   TrajectoryPointsInterval: 5
@@ -651,7 +655,7 @@ GameObject:
   - component: {fileID: 1804878435}
   - component: {fileID: 1804878440}
   m_Layer: 0
-  m_Name: Sun (1)
+  m_Name: planetSample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -685,6 +689,7 @@ MonoBehaviour:
   precalculatedMovementTime: 3
   doesMove: 1
   multiplier: 1
+  significant: 0
   mass: 1
   stepInTrajectoryMovement: 0
   TrajectoryPointsInterval: 5
