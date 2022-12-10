@@ -10,11 +10,14 @@ using UnityEngine.Rendering;
 [System.Serializable]
 public class TypeToObject
 {
+	
 	public PlanetTypes type;
 	public GameObject obj;
+	public bool canBeSpawned=false;
 }
 public class LevelManager : MonoSingleton<LevelManager>
 {
+	
 	public Volume bloomVolume;
 	public GameObject cat;
 	private List<GameObject> catsList = new List<GameObject>();
@@ -27,6 +30,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 	public bool isAnyBeingDragged = false;
 	public float passed = 0;
 	public float delaySeconds = 4;
+	public Sun sun;
 	public bool isPaused=false;
     // Start is called before the first frame update
     public void MoveObjects()
@@ -59,9 +63,14 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     public void SpawnNewCat(GameObject lastCat)
     {
+	    currentCat++;
+	    if (currentCat >= catsList.Count)
+	    {
+		    currentCat = 0;
+	    }
 	    var catPrefab = catsList[currentCat];
 	    cat = Instantiate(catPrefab, lastCat.transform.position, Quaternion.identity);
-	    currentCat++;
+	   
     }
 	void Update()
 	{
@@ -100,6 +109,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 	{
 		UpdateCelestialBodiesListFromScene();
 		RecalculateTrajectory();
+		this.sun = FindObjectOfType<Sun>();
 		cat = FindObjectOfType<CatMovement>().gameObject;
 		StartCoroutine(SpawningCoroutine());
 		//GameObject.FindObjectOfType<GameManager>().ShowEndCampaignRewardScreen(100);
@@ -110,8 +120,10 @@ public class LevelManager : MonoSingleton<LevelManager>
 	{
 		while (true)
 		{
+			yield return new WaitForSeconds(10.0f);
 			//get random planet
-			GameObject planet = basicPlanets[Random.Range(0, basicPlanets.Count)].obj;
+			var allowedPlanets = basicPlanets.Where(x => x.canBeSpawned).ToList();
+			GameObject planet = allowedPlanets[Random.Range(0, allowedPlanets.Count)].obj;
 			LinePoint spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
 			while (!planetsSpawned.Select(x => x.Item1).All(x => spawnPoints.Contains(x)) && planetsSpawned.Select(x=>x.Item1).Contains(spawnPoint))
 			{
@@ -120,7 +132,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 			if (!isPaused)
 				this.SpawnNewPlanet(planet, spawnPoint);
 			// Wait for 10 seconds before calling the coroutine again
-			yield return new WaitForSeconds(10.0f);
+			
 		}
 	}
 	private Vector2 CalculateOrbitalVelocity(float gravitationalForce, Vector2 sunPosition, Vector2 planetPosition, float sunMass, float G)

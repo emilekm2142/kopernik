@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Slingshoot : MonoBehaviour
 {
+    public float maxDistanceFromSun = 10f;
     public long lastTouchedTimestamp = 0;
     public int draggedCount = 0;
     public float maxForce = 10f;
@@ -26,6 +28,17 @@ public class Slingshoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (GetComponent<PlanetCollision>().isDestroyable && LevelManager.Current.sun != null && Vector2.Distance(LevelManager.Current.sun.transform.position, this.transform.position) > maxDistanceFromSun)
+        {
+            LevelManager.Current.celestialBodies.Remove(this.gameObject.GetComponent<CelestialBody>());
+            Destroy(this.gameObject);
+        }
+        if (this.draggedCount > 0)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(1) &&LevelManager.Current.isPaused)
         {
             isBeingDragged = false;

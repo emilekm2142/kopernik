@@ -10,6 +10,7 @@ using UnityEngine.Rendering.Universal;
 
 public class PlanetCollision : MonoBehaviour
 {
+    public bool isDestroyable = true;
     public bool isColliding = false;
     public PlanetTypes planetType;
     CelestialBody celestialBody;
@@ -32,6 +33,16 @@ public class PlanetCollision : MonoBehaviour
       //if col has component CelestialBody, then get the planet type
         if (col.gameObject.GetComponent<CelestialBody>() != null && !isColliding)
         {
+            if (col.gameObject.GetComponent<Sun>() != null)
+            {
+                LevelManager.Current.celestialBodies.Remove(this.gameObject.GetComponent<CelestialBody>());
+                Destroy(this.gameObject);
+                
+                DOVirtual.Float(0, 1, 0.3f, v => LevelManager.Current.bloomVolume.weight = v).SetEase(Ease.OutQuart).SetLoops(2, LoopType.Yoyo);
+
+                return;
+            }
+
             Debug.Log("collision...");
             isColliding = true;
             col.gameObject.GetComponent<PlanetCollision>().isColliding = true;
@@ -60,8 +71,8 @@ public class PlanetCollision : MonoBehaviour
             }
 
             SpawnParticles();
-            Destroy(gameObject);
-            Destroy(col.gameObject);
+            if (isDestroyable) Destroy(gameObject);
+           if (col.gameObject.GetComponent<PlanetCollision>().isDestroyable) Destroy(col.gameObject);
 
             DOVirtual.Float(0, 1, 0.1f, v => LevelManager.Current.bloomVolume.weight = v).SetEase(Ease.OutQuart).SetLoops(2, LoopType.Yoyo);
             Camera.main.DOShakePosition(0.2f, 1f, 10, 90f, true);
