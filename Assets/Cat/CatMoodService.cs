@@ -7,6 +7,8 @@ using UnityEngine;
 public class CatMoodService : MonoBehaviour
 {
 
+    public AudioClip happyClip;
+    
     public GameObject eyeGameObject;
     public GameObject mouthGameObject;
     public GameObject whimGameObject;
@@ -31,7 +33,6 @@ public class CatMoodService : MonoBehaviour
     [HideInInspector]
     private CoutdownTimer mouthTimer = new CoutdownTimer();
     
-
     private void Start()
     {
         eyeTimer.SetDefaultCoutdown(coutdownSecond);
@@ -58,6 +59,7 @@ public class CatMoodService : MonoBehaviour
         {
             case CatMouth.Happy:
                 mouthGameObject.GetComponent<SpriteRenderer>().sprite = mouthHappySprite;  
+                GetComponent<AudioSource>().PlayOneShot(happyClip);
                 break;
             case CatMouth.Neutral:
                 mouthGameObject.GetComponent<SpriteRenderer>().sprite = mouthNeutralSprite;
