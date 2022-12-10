@@ -20,21 +20,7 @@ public class CatTarget : MonoBehaviour
         {
             var cat = FindObjectOfType<CatMovement>().gameObject;
             var prevCat = LevelManager.Current.cat;
-           // LevelManager.Current.SpawnNewCat(prevCat);
-            //tween it
-            
-            //cat.transform.parent = x.gameObject.transform;
-            // DOVirtual.Vector3(cat.transform.localPosition, Vector3.zero + Vector3.right / 6, 1,
-            //     v => cat.transform.localPosition = v).SetEase(Ease.InOutSine);
-            // DOVirtual.Vector3(cat.transform.localScale, new Vector3(0.4f, 0.4f, 0.4f), 1,
-            //     v => cat.transform.localScale = v).SetEase(Ease.InOutSine);
-            // Camera.main.DOOrthoSize(2, 1f).SetEase(Ease.OutElastic);
-            // LevelManager.Current.Pause();
-            //  DOVirtual.Vector3(Camera.main.transform.position, x.transform.position, 0.1f,
-            //     v => Camera.main.transform.position = v).
-            //      OnComplete(()=>LevelManager.Current.Resume())
-            //      .SetEase(Ease.InOutSine);;
-            //  Camera.main.transform.parent = x.gameObject.transform;
+           LevelManager.Current.SpawnNewCat(prevCat);
 
         }
     }

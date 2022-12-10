@@ -65,12 +65,21 @@ public class LevelManager : MonoSingleton<LevelManager>
     public void SpawnNewCat(GameObject lastCat)
     {
 	    currentCat++;
-	    if (currentCat >= catsList.Count)
+	    if (currentCat > 1)
 	    {
 		    currentCat = 0;
 	    }
-	    var catPrefab = catsList[currentCat];
-	    cat = Instantiate(catPrefab, lastCat.transform.position, Quaternion.identity);
+	    if (currentCat == 0)
+	    {
+		    FindObjectOfType<CatMoodService>().SetWhim(WhimEnum.Mushrom);
+		    FindObjectOfType<CatTarget>().targetPlanetType = PlanetTypes.PlanetOfMushrooms;
+	    }
+	    if (currentCat == 1)
+	    {
+		    FindObjectOfType<CatMoodService>().SetWhim(WhimEnum.TreeSapling);
+		    FindObjectOfType<CatTarget>().targetPlanetType = PlanetTypes.RockGrassTree;
+	    }
+	    
 	   
     }
 	void Update()
@@ -113,6 +122,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 		this.sun = FindObjectOfType<Sun>();
 		cat = FindObjectOfType<CatMovement>().gameObject;
 		StartCoroutine(SpawningCoroutine());
+		FindObjectOfType<CatMoodService>().SetWhim(WhimEnum.Mushrom);
 		//GameObject.FindObjectOfType<GameManager>().ShowEndCampaignRewardScreen(100);
 
 	}

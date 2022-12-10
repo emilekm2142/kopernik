@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 353452659584165392, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 353452659584165392, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -222,6 +222,18 @@ PrefabInstance:
     - target: {fileID: 353452659584165421, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
       propertyPath: m_Name
       value: CatObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 353452659584165422, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
+      propertyPath: shakeRange.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 353452659584165422, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
+      propertyPath: shakeStrength.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 353452659584165422, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
+      propertyPath: shakeStrength.y
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}

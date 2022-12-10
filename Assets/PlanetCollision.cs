@@ -86,17 +86,7 @@ public class PlanetCollision : MonoBehaviour
 
             DOVirtual.Float(0, 1, 0.1f, v => LevelManager.Current.bloomVolume.weight = v).SetEase(Ease.OutQuart).SetLoops(2, LoopType.Yoyo);
             Camera.main.DOShakePosition(0.2f, 1f, 10, 90f, true);
-            // col.gameObject.GetComponent<Explodable>().explode();
-            // gameObject.GetComponent<Explodable>().explode();
-            // foreach (var fragment in gameObject.GetComponent<Explodable>().fragments)
-            // {
-            //
-            //     AddExplosionForce(fragment.GetComponent<Rigidbody2D>(),
-            //         1, col.contacts[0].point, 15);
-					       //
-            // }
-            //
-       //     LevelManager.Current.UpdateCelestialBodiesListFromScene();
+        
        if (isDestroyable)  LevelManager.Current.celestialBodies.Remove(this.gameObject.GetComponent<CelestialBody>());
        if (col.gameObject.GetComponent<PlanetCollision>().isDestroyable)    LevelManager.Current.celestialBodies.Remove(col.gameObject.GetComponent<CelestialBody>());
             LevelManager.Current.GetComponent<CatTarget>().ScanIfWon();
