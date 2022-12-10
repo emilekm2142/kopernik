@@ -5,6 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.kopernik/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.kopernik/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Cat.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cat.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Cat/CatMoodService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cat/CatMoodService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Marta/PlanetService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Marta/PlanetService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Marta/PlantController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Marta/PlantController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Marta/TestMarta.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Marta/TestMarta.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +95,7 @@
       <workItem from="1670669804452" duration="57000" />
       <workItem from="1670669920872" duration="10027000" />
       <workItem from="1670693000643" duration="1741000" />
-      <workItem from="1670698572516" duration="8393000" />
+      <workItem from="1670698572516" duration="11377000" />
     </task>
     <servers />
   </component>

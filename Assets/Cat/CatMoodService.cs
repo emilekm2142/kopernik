@@ -4,10 +4,15 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 public class CatMoodService : MonoBehaviour
 {
 
-    public AudioClip happyClip;
+    public AudioClip soundClip1;
+    public AudioClip soundClip2;
+    public AudioClip soundClip3;
+    public AudioClip soundClip4;
     
     public GameObject eyeGameObject;
     public GameObject mouthGameObject;
@@ -58,8 +63,8 @@ public class CatMoodService : MonoBehaviour
         switch (_catMouth)
         {
             case CatMouth.Happy:
-                mouthGameObject.GetComponent<SpriteRenderer>().sprite = mouthHappySprite;  
-                GetComponent<AudioSource>().PlayOneShot(happyClip);
+                mouthGameObject.GetComponent<SpriteRenderer>().sprite = mouthHappySprite;
+                PlaySound();
                 break;
             case CatMouth.Neutral:
                 mouthGameObject.GetComponent<SpriteRenderer>().sprite = mouthNeutralSprite;
@@ -68,6 +73,7 @@ public class CatMoodService : MonoBehaviour
                 mouthGameObject.GetComponent<SpriteRenderer>().sprite = mouthSadSprite;
                 break;
         }
+        
         StartTimer();
     }
 
@@ -101,6 +107,28 @@ public class CatMoodService : MonoBehaviour
             case WhimEnum.TreeSapling:
                 whimGameObject.GetComponent<SpriteRenderer>().sprite = whimTreeSprite;
                 break;
+        }
+    }
+
+    void PlaySound()
+    {
+        float randomNumber = Random.Range(1, 5);
+        Debug.Log(randomNumber);
+        switch (randomNumber)
+        {
+            case 1:
+                GetComponent<AudioSource>().PlayOneShot(soundClip1);
+                break;
+            case 2:
+                GetComponent<AudioSource>().PlayOneShot(soundClip2);
+                break;
+            case 3:
+                GetComponent<AudioSource>().PlayOneShot(soundClip3);
+                break;
+            case 4:
+                GetComponent<AudioSource>().PlayOneShot(soundClip4);
+                break;
+
         }
     }
     
