@@ -21672,11 +21672,11 @@ MonoBehaviour:
   isColliding: 0
   arrow: {fileID: 1478257540}
   basicPlanets:
-  - type: 0
+  - type: 15
     obj: {fileID: 8216240875811437715, guid: 8c4c3a648bedd40859b9d249bc7778e8, type: 3}
-  - type: 1
-    obj: {fileID: 8216240875811437715, guid: 1df10384444064e5dbfe8e1f249b3d9d, type: 3}
-  - type: 2
+  - type: 5
+    obj: {fileID: 601793014752850328, guid: 59d980690b4ae4b94be22388edd5a180, type: 3}
+  - type: 16
     obj: {fileID: 601793014752850328, guid: b9fa5cca4a27d4fe2b2208536ba7090b, type: 3}
   spawnPoints:
   - pos: {x: 0, y: 2.6}
@@ -28007,7 +28007,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 6, y: 6}
+    newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -54971,6 +54971,18 @@ PrefabInstance:
     - target: {fileID: 8216240875811437718, guid: 8c4c3a648bedd40859b9d249bc7778e8, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8216240875811437718, guid: 8c4c3a648bedd40859b9d249bc7778e8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1903937
+      objectReference: {fileID: 0}
+    - target: {fileID: 8216240875811437718, guid: 8c4c3a648bedd40859b9d249bc7778e8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1903937
+      objectReference: {fileID: 0}
+    - target: {fileID: 8216240875811437718, guid: 8c4c3a648bedd40859b9d249bc7778e8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1903937
       objectReference: {fileID: 0}
     - target: {fileID: 8216240875811437718, guid: 8c4c3a648bedd40859b9d249bc7778e8, type: 3}
       propertyPath: m_LocalPosition.x

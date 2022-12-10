@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyeGameObject: {fileID: 1328807240313692839}
-  cuteSprite: {fileID: 21300000, guid: b2b4558b733df418dbe1b75156186fe9, type: 3}
-  shockSprite: {fileID: 21300000, guid: c38220dc238824ef2b7570e42b6cd86b, type: 3}
-  angrySprite: {fileID: 21300000, guid: 861629cdfd40a41149cc9a8954c4086c, type: 3}
+  cuteSprite: {fileID: 21300000, guid: f47d2c95d68fd4272a01cd5bdf3ec990, type: 3}
+  shockSprite: {fileID: 21300000, guid: be7b16a349ee142719316b17a1980e68, type: 3}
+  angrySprite: {fileID: 21300000, guid: 772c6cc38728e43c694d7a2b90b0b0f4, type: 3}
   secToCute: 5
 --- !u!114 &353452659584165422
 MonoBehaviour:
@@ -322,7 +322,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: b2b4558b733df418dbe1b75156186fe9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f47d2c95d68fd4272a01cd5bdf3ec990, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
