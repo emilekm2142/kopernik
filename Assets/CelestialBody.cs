@@ -129,28 +129,29 @@ public class CelestialBody : MonoBehaviour
 	  
             
     }
-    public void RecalculateTrajectory(bool addToPreview, float hVx = -9999f, float hVy= -9999f)
+
+    public void RecalculateTrajectory(bool addToPreview, float hVx = 0f, float hVy = 0f, bool clearLine = false)
     {
 	    
 		int i = -1;
 		int c = 0;
 	
 		trajectoryPoints.Clear();
-		
+		if (clearLine) _linePoints.Clear();
 		GetComponent<LineRenderer>().SetPositions(new Vector3[0]);
 		bool addCurrentFrame = true;
 		//float timeStep =Time.fixedDeltaTime / Physics2D.velocityIterations/1;
 		float timeStep =Time.fixedDeltaTime;
 		float time = 0;
 		Vector2 position = transform.position;
-		Vector2 velocity = new Vector2(hVx, hVy);
-		if (velocity.y == -9999f)
-		{
+		Vector2 velocity = 
+		
 
 			velocity = GetComponent<Rigidbody2D>().velocity == Vector2.zero
 				? GetComponent<StartVelocity>().startVelocity
 				: GetComponent<Rigidbody2D>().velocity;
-		} //Vector2 velocity = new Vector2(30,0);
+		velocity.x += hVx;
+		velocity.y += hVy;
 
 		while (time <= precalculatedMovementTime)
 		{

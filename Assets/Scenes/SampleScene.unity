@@ -1025,8 +1025,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68144be6525a741ed8379f205a7c97b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxForce: 3
+  maxDistance: 3
   startMousePos: {x: 0, y: 0}
   isBeingDragged: 0
+  celestialBody: {fileID: 0}
 --- !u!58 &1804878442
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class Slingshoot : MonoBehaviour
 {
+    public float maxForce = 10f;
     public float maxDistance = 10f;
     private SpriteRenderer arrowSprite;
     public Vector2 startMousePos;
@@ -22,9 +23,15 @@ public class Slingshoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            isBeingDragged = false;
+            celestialBody.RecalculateTrajectory(true);
+        }
         if (Input.GetMouseButtonUp(0))
         {
             isBeingDragged = false;
+            LevelManager.Current.Resume();
         }
 
         if (Input.GetMouseButton(0) && isBeingDragged)
@@ -33,14 +40,16 @@ public class Slingshoot : MonoBehaviour
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //get direction
             Vector2 direction = mousePos - startMousePos;
+            //clamp the lenght of this vector to maxDistance
+            direction = Vector2.ClampMagnitude(direction, maxForce);
             //invert direction
             direction = -direction;
             
             //get distance
             float distance = Vector2.Distance(mousePos, startMousePos);
             //get distance of each component
-            float x = Mathf.Abs(direction.x);
-            float y = Mathf.Abs(direction.y);
+            float x = direction.x;
+            float y = direction.y;
             
             //set max distance
             
@@ -52,7 +61,7 @@ public class Slingshoot : MonoBehaviour
             //set arrow rotation
             LevelManager.Current.arrow.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
             
-            celestialBody.RecalculateTrajectory(true, x,y);
+            celestialBody.RecalculateTrajectory(true, x,y, true);
         }
     }
 
