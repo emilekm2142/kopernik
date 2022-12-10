@@ -14,7 +14,7 @@ PrefabInstance:
     - target: {fileID: 601793014752850332, guid: b9fa5cca4a27d4fe2b2208536ba7090b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9d35a2eba81e24161ba366722cbea833, type: 3}
+      objectReference: {fileID: 21300000, guid: 0f79c19122e734816937144db2f7dc59, type: 3}
     - target: {fileID: 601793014752850333, guid: b9fa5cca4a27d4fe2b2208536ba7090b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4927329253537509219, guid: b9fa5cca4a27d4fe2b2208536ba7090b, type: 3}
       propertyPath: planetType
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9fa5cca4a27d4fe2b2208536ba7090b, type: 3}

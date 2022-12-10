@@ -5,7 +5,10 @@ using UnityEngine;
 
 public enum PlanetTypes
 {
-    Soil, Water, Earth, Rock, Fire, Mushroom, Tree, None
+    Asteroid01, Asteroid02, Asteroid03, PlanetOfMushrooms,
+    RockAndGrass, RockGrassTree, Rock, TreeSapling,
+    Grass, Water, LevitatingMushroom, Sun, LevitatingApple,
+    RockWater, Jupiter, Soil, Earth, None
 }
 public static class PlanetCollisionsStore
 {

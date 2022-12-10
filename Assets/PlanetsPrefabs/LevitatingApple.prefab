@@ -1240,7 +1240,7 @@ GameObject:
   - component: {fileID: 3585529839426602416}
   - component: {fileID: 3593533535973490774}
   m_Layer: 0
-  m_Name: Earth
+  m_Name: LevitatingApple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1470,7 +1470,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1b3278b1a563f4feeaaaa8791133185c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32da725de3a214022bf08ec665b8ac0d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1665,7 +1665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isColliding: 0
-  planetType: 16
+  planetType: 12
 --- !u!61 &8778616995368476932
 BoxCollider2D:
   m_ObjectHideFlags: 0
