@@ -53,10 +53,10 @@ public class PlanetCollision : MonoBehaviour
                 newInstance.GetComponent<PlanetCollision>().isColliding = true;
                
                 LevelManager.Current.celestialBodies.Add(newInstance.GetComponent<CelestialBody>());
-                // if (FindObjectOfType<CatPositiveNewPlanetSpawns>().planetTypes.Contains(newPlanetType))
-                // {
-                //     //set mood to positive
-                // }
+                if (FindObjectOfType<CatPositiveNewPlanetSpawns>().planetTypes.Contains(newPlanetType))
+                {
+                    FindObjectOfType<CatMoodService>().SetMood(CatMood.HAPPY);
+                }
             }
 
             SpawnParticles();
