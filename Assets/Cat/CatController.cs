@@ -6,12 +6,15 @@ using UnityEngine;
 public class CatController : MonoBehaviour
 {
     public CatMoodService catMoodService;
-    public CatMood catMood;
+    public CatMouth catMouth;
     public CatEye catEye;
     
     private void OnMouseDown()
     {
-        catMoodService.SetMood(catMood);
-        catMoodService.SetEye(catEye);
+        if(catMouth != CatMouth.None)
+            catMoodService.SetMouth(catMouth);
+        
+        if(catEye != CatEye.NONE)
+            catMoodService.SetEye(catEye);
     }
 }
