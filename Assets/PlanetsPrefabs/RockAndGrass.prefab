@@ -1236,9 +1236,7 @@ GameObject:
   - component: {fileID: 601793014752850322}
   - component: {fileID: 601793014752850323}
   - component: {fileID: 4927329253537509219}
-  - component: {fileID: 8778616995368476932}
-  - component: {fileID: 3585529839426602416}
-  - component: {fileID: 3593533535973490774}
+  - component: {fileID: 2285644239629929201}
   m_Layer: 0
   m_Name: RockAndGrass
   m_TagString: Untagged
@@ -1645,6 +1643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68144be6525a741ed8379f205a7c97b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDistanceFromSun: 10
   lastTouchedTimestamp: 0
   draggedCount: 0
   maxForce: 3
@@ -1664,10 +1663,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0117c802cfd4a77ba691ebb3b68a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyable: 1
   isColliding: 0
   planetType: 4
---- !u!61 &8778616995368476932
-BoxCollider2D:
+--- !u!58 &2285644239629929201
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1680,221 +1680,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 5.12, y: 5.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 0
---- !u!114 &3585529839426602416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601793014752850328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75953d6b31f574644be1238b08e89b8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowRuntimeFragmentation: 0
-  extraPoints: 9
-  subshatterSteps: 1
-  fragmentLayer: Default
-  sortingLayerName: Default
-  orderInLayer: 0
-  shatterType: 1
-  fragments:
-  - {fileID: 1326702626958747452}
-  - {fileID: 9120878098982680549}
-  - {fileID: 3328022989767926283}
-  - {fileID: 3093048567052387975}
-  - {fileID: 180123598543416968}
-  - {fileID: 1858324637473314088}
-  - {fileID: 1575731858348439893}
-  - {fileID: 6407049821341567349}
-  - {fileID: 4618304434928464982}
-  - {fileID: 3003457547653949872}
-  - {fileID: 477001926862569784}
-  - {fileID: 4942231157728915579}
-  - {fileID: 1043756595606362593}
-  - {fileID: 4790802010532657782}
-  - {fileID: 1148053990097137759}
-  - {fileID: 7950317591752043351}
-  - {fileID: 5720424939309809440}
-  - {fileID: 6429080622667254784}
-  - {fileID: 5378855543595356853}
-  - {fileID: 9082218067105633672}
-  - {fileID: 1131890743023819760}
-  - {fileID: 731006476122358900}
-  - {fileID: 5495689343804964845}
-  - {fileID: 8258888603927045130}
-  - {fileID: 4009426430801652229}
-  - {fileID: 8630560439018868010}
-  - {fileID: 5210976976041142244}
-  - {fileID: 6120374875152005711}
-  - {fileID: 6564406979112077097}
-  - {fileID: 2352680309778258161}
-  - {fileID: 684595156798323230}
-  - {fileID: 8722858018659400583}
-  - {fileID: 7647184282713044828}
-  - {fileID: 5477981761565517202}
-  - {fileID: 7834390711821849239}
-  - {fileID: 5159396932440751586}
-  - {fileID: 134520047104591623}
-  - {fileID: 5534638572760604113}
-  - {fileID: 6879147913792597518}
-  - {fileID: 3170291338532331936}
-  - {fileID: 3075923445115330095}
-  - {fileID: 926246302265590562}
-  - {fileID: 1604904779627395027}
-  - {fileID: 2371932635682036596}
-  - {fileID: 5272278422047574981}
-  - {fileID: 3686415499335063016}
-  - {fileID: 4222855821379616340}
-  - {fileID: 779231390580369245}
-  - {fileID: 5844361563448579986}
-  - {fileID: 4659644663044051910}
-  - {fileID: 4731723380208182437}
-  - {fileID: 2632083827389983321}
-  - {fileID: 82171812604934034}
-  - {fileID: 5641961957027319966}
-  - {fileID: 7741068464505474923}
-  - {fileID: 3741545043251549169}
-  - {fileID: 7226220174145593482}
-  - {fileID: 8079152047872205012}
-  - {fileID: 5951744094195831477}
-  - {fileID: 7666462653049562838}
-  - {fileID: 2682107347778654161}
-  - {fileID: 6813156130055974758}
-  - {fileID: 5791319404579999927}
-  - {fileID: 8897484019800906362}
-  - {fileID: 3888651882445074919}
-  - {fileID: 8596721989290916374}
-  - {fileID: 7391886785319146397}
-  - {fileID: 3662724943877056281}
-  - {fileID: 8989087616093825724}
-  - {fileID: 2369109203980978753}
-  - {fileID: 488534270895000086}
-  - {fileID: 4687787772241005328}
-  - {fileID: 5204711241205490010}
-  - {fileID: 1548893542265194807}
-  - {fileID: 4064862052237486655}
-  - {fileID: 3633353501629726081}
-  - {fileID: 4169190792559113508}
-  - {fileID: 5202558164392755226}
-  - {fileID: 4312534702841416940}
-  - {fileID: 5126410942424424505}
-  - {fileID: 6023431272612763902}
-  - {fileID: 5556220136342080083}
-  - {fileID: 5916231555093490003}
-  - {fileID: 5469642929623321127}
-  - {fileID: 4084865854806046877}
-  - {fileID: 1505643766123956214}
-  - {fileID: 1254383795936793655}
-  - {fileID: 5464543731308626731}
-  - {fileID: 721880306445535972}
-  - {fileID: 4910574216199131220}
-  - {fileID: 3274360194539200538}
-  - {fileID: 7269207656953683644}
-  - {fileID: 5976467710994828555}
-  - {fileID: 3074454539960906640}
-  - {fileID: 7956273585685980647}
-  - {fileID: 6166664955310623346}
-  - {fileID: 8812685996287017992}
-  - {fileID: 5762471727852765848}
-  - {fileID: 7814273806284155855}
-  - {fileID: 2416702463706640313}
-  - {fileID: 4311622336534931892}
-  - {fileID: 6975311749254124239}
-  - {fileID: 55007020890283467}
-  - {fileID: 130794294574998060}
-  - {fileID: 3946358625171696440}
-  - {fileID: 1068824805549910295}
-  - {fileID: 6253976570580733928}
-  - {fileID: 4670615645895055938}
-  - {fileID: 2050884363915248234}
-  - {fileID: 7741603575317146682}
-  - {fileID: 4456273670614171158}
-  - {fileID: 133156405390306726}
-  - {fileID: 1614122347435831138}
-  - {fileID: 6810069694729906652}
-  - {fileID: 7413726155970297306}
-  - {fileID: 7480664834518061872}
-  - {fileID: 8265726151263565039}
-  - {fileID: 1799671956633474889}
-  - {fileID: 3981028262854232699}
-  - {fileID: 837547031106437981}
-  - {fileID: 2711525567600931099}
-  - {fileID: 1978976998783830333}
-  - {fileID: 8445240907690646572}
-  - {fileID: 925153522303108959}
-  - {fileID: 5833997242775371067}
-  - {fileID: 3690123997179988642}
-  - {fileID: 5414531919479925669}
-  - {fileID: 847012550896583793}
-  - {fileID: 8481547041845456551}
-  - {fileID: 3167479133393881665}
-  - {fileID: 4258449043903310439}
-  - {fileID: 6125503843438166389}
-  - {fileID: 2492819830971113011}
-  - {fileID: 2311057492508865222}
-  - {fileID: 3342651010020620833}
-  - {fileID: 3674971810270349855}
-  - {fileID: 1880114175481867280}
-  - {fileID: 4261138068617076179}
-  - {fileID: 5673331515084495706}
-  - {fileID: 6829153529972951394}
-  - {fileID: 8905025625550488788}
-  - {fileID: 4544088721473871238}
-  - {fileID: 46964505624882719}
-  - {fileID: 1540224630256461628}
-  - {fileID: 8249161219817958515}
-  - {fileID: 4222958252705653418}
-  - {fileID: 3240906643716405791}
-  - {fileID: 2543937109542400219}
-  - {fileID: 1778762827200296894}
-  - {fileID: 2321391023463226509}
-  - {fileID: 4570837850902660749}
-  - {fileID: 4635212055121842778}
-  - {fileID: 2211833190545488772}
-  - {fileID: 6431449405854164979}
-  - {fileID: 8808345684467090304}
-  - {fileID: 1543173374465383197}
-  - {fileID: 5943092788197156291}
-  - {fileID: 4368865106786361324}
-  - {fileID: 4530900530556534099}
-  - {fileID: 8276168255520287582}
-  - {fileID: 8063695120074058362}
-  - {fileID: 6847448940777743334}
-  - {fileID: 1227927001663673951}
-  - {fileID: 7975698570833890900}
-  - {fileID: 5842513505800217520}
-  - {fileID: 8183325547349690811}
-  - {fileID: 1370838599173528186}
-  - {fileID: 6678086737640168189}
---- !u!114 &3593533535973490774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601793014752850328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b57070c18171a2448bd93ce4df9e8ff5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 50
-  radius: 5
-  upliftModifer: 5
+  m_Radius: 1.96
 --- !u!1 &684595156798323230
 GameObject:
   m_ObjectHideFlags: 0

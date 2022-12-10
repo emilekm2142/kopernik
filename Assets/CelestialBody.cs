@@ -13,6 +13,8 @@ public class LinePoint
 }
 public class CelestialBody : MonoBehaviour
 {
+	
+	
     private List<LinePoint> trajectoryPoints = new List<LinePoint>();
     public float precalculatedMovementTime = 3f;
     public bool doesMove = true;

@@ -115,20 +115,43 @@ public class LevelManager : MonoSingleton<LevelManager>
 		//GameObject.FindObjectOfType<GameManager>().ShowEndCampaignRewardScreen(100);
 
 	}
-
+	private LinePoint lastSpawnPoint=null;
+	private GameObject lastPlanetSpawned=null;
 	private IEnumerator SpawningCoroutine()
 	{
 		while (true)
 		{
-			yield return new WaitForSeconds(10.0f);
+			yield return new WaitForSeconds(3.0f);
 			//get random planet
 			var allowedPlanets = basicPlanets.Where(x => x.canBeSpawned).ToList();
 			GameObject planet = allowedPlanets[Random.Range(0, allowedPlanets.Count)].obj;
 			LinePoint spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
-			while (!planetsSpawned.Select(x => x.Item1).All(x => spawnPoints.Contains(x)) && planetsSpawned.Select(x=>x.Item1).Contains(spawnPoint))
+			while (true)
+			{
+				planet = allowedPlanets[Random.Range(0, allowedPlanets.Count)].obj;
+				if (lastPlanetSpawned!=planet){
+					break;
+				}
+				else
+				{
+					continue;
+				}
+			}
+			while (true)
 			{
 				spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+				if (spawnPoint != lastSpawnPoint)
+				{
+					break;
+				}
+				else
+				{
+					continue;
+				}
 			}
+			Debug.Log(spawnPoint.pos);
+			lastSpawnPoint = spawnPoint;
+			lastPlanetSpawned = planet;
 			if (!isPaused)
 				this.SpawnNewPlanet(planet, spawnPoint);
 			// Wait for 10 seconds before calling the coroutine again

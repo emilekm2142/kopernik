@@ -46,8 +46,9 @@ public class PlanetCollision : MonoBehaviour
             Debug.Log("collision...");
             isColliding = true;
             col.gameObject.GetComponent<PlanetCollision>().isColliding = true;
-            planetType = col.gameObject.GetComponent<PlanetCollision>().planetType;
-            var newPlanetType = PlanetCollisionsStore.GetNewPlanetType(this.planetType, planetType);
+            var otherPlanetType = col.gameObject.GetComponent<PlanetCollision>().planetType;
+            var newPlanetType = PlanetCollisionsStore.GetNewPlanetType(this.planetType, otherPlanetType);
+            Debug.Log(newPlanetType);
             if (newPlanetType != PlanetTypes.None)
             {
                 var newPlanetPrefab = LevelManager.Current.basicPlanets.First(x => x.type == newPlanetType).obj;
@@ -87,8 +88,8 @@ public class PlanetCollision : MonoBehaviour
             // }
             //
        //     LevelManager.Current.UpdateCelestialBodiesListFromScene();
-            LevelManager.Current.celestialBodies.Remove(this.gameObject.GetComponent<CelestialBody>());
-            LevelManager.Current.celestialBodies.Remove(col.gameObject.GetComponent<CelestialBody>());
+       if (isDestroyable)  LevelManager.Current.celestialBodies.Remove(this.gameObject.GetComponent<CelestialBody>());
+       if (col.gameObject.GetComponent<PlanetCollision>().isDestroyable)    LevelManager.Current.celestialBodies.Remove(col.gameObject.GetComponent<CelestialBody>());
             LevelManager.Current.GetComponent<CatTarget>().ScanIfWon();
           
         }
