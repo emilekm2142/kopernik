@@ -1,16 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
+using DG.Tweening;
 public class LevelManager : MonoSingleton<LevelManager>
 {
 	public GameObject arrow;
-	public GameObject planetPrefab;
+	public List<GameObject> basicPlanets = new List<GameObject>();
 	public List<LinePoint> spawnPoints = new List<LinePoint>();
 	public List<Tuple<LinePoint, GameObject>> planetsSpawned = new List<Tuple<LinePoint, GameObject>>();
-	
+	public bool isAnyBeingDragged = false;
 	public float passed = 0;
 	public float delaySeconds = 4;
 	public bool isPaused=false;
@@ -58,8 +59,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 		if (Input.GetKeyDown(KeyCode.A))
 		{
 			//get random spawn point
-			LinePoint spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
-			this.SpawnNewPlanet(planetPrefab, spawnPoint);
+		
 		}
 
 		if (   (Input.GetKeyDown("space")||Input.GetKeyDown(KeyCode.Pause)) && !Application.isEditor)
@@ -81,9 +81,28 @@ public class LevelManager : MonoSingleton<LevelManager>
 	{
 		UpdateCelestialBodiesListFromScene();
 		RecalculateTrajectory();
-		
+
+		StartCoroutine(SpawningCoroutine());
 		//GameObject.FindObjectOfType<GameManager>().ShowEndCampaignRewardScreen(100);
-		
+
+	}
+
+	private IEnumerator SpawningCoroutine()
+	{
+		while (true)
+		{
+			//get random planet
+			GameObject planet = basicPlanets[Random.Range(0, basicPlanets.Count)];
+			LinePoint spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+			while (!planetsSpawned.Select(x => x.Item1).All(x => spawnPoints.Contains(x)) && planetsSpawned.Select(x=>x.Item1).Contains(spawnPoint))
+			{
+				spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+			}
+			if (!isPaused)
+				this.SpawnNewPlanet(planet, spawnPoint);
+			// Wait for 10 seconds before calling the coroutine again
+			yield return new WaitForSeconds(10.0f);
+		}
 	}
 	private Vector2 CalculateOrbitalVelocity(float gravitationalForce, Vector2 sunPosition, Vector2 planetPosition, float sunMass, float G)
 	{

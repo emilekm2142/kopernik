@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class Slingshoot : MonoBehaviour
 {
+    public int draggedCount = 0;
     public float maxForce = 10f;
     public float maxDistance = 10f;
     private SpriteRenderer arrowSprite;
@@ -26,12 +27,18 @@ public class Slingshoot : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             isBeingDragged = false;
+            LevelManager.Current.isAnyBeingDragged = false;
             celestialBody.RecalculateTrajectory(true);
         }
         if (Input.GetMouseButtonUp(0))
         {
-            isBeingDragged = false;
-            LevelManager.Current.Resume();
+            if (LevelManager.Current.isAnyBeingDragged && isBeingDragged)
+            {
+                isBeingDragged = false;
+                LevelManager.Current.isAnyBeingDragged = false;
+                LevelManager.Current.Resume();
+                draggedCount++;
+            }
         }
 
         if (Input.GetMouseButton(0) && isBeingDragged)
@@ -56,6 +63,7 @@ public class Slingshoot : MonoBehaviour
             //clamp distance
             distance = Mathf.Clamp(distance, 0, maxDistance);
             arrowSprite.color = Color.red*Mathf.Lerp(0,1,distance/maxDistance);
+            arrowSprite.transform.localScale= new Vector3(1*Mathf.Lerp(0,1,distance/maxDistance),1,1);
             //set arrow position
             LevelManager.Current.arrow.transform.position = startMousePos;
             //set arrow rotation
@@ -67,8 +75,12 @@ public class Slingshoot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        startMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        isBeingDragged = true;
+        if (LevelManager.Current.isAnyBeingDragged == false)
+        {
+            startMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            isBeingDragged = true;
+            LevelManager.Current.isAnyBeingDragged = true;
+        }
     }
     
 }
