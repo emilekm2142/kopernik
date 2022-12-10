@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
+	public GameObject arrow;
 	public GameObject planetPrefab;
 	public List<LinePoint> spawnPoints = new List<LinePoint>();
 	public List<Tuple<LinePoint, GameObject>> planetsSpawned = new List<Tuple<LinePoint, GameObject>>();
@@ -44,9 +45,6 @@ public class LevelManager : MonoSingleton<LevelManager>
 
 	void Update()
 	{
-		
-		
-
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			Pause();

@@ -129,7 +129,7 @@ public class CelestialBody : MonoBehaviour
 	  
             
     }
-    public void RecalculateTrajectory(bool addToPreview)
+    public void RecalculateTrajectory(bool addToPreview, float hVx = -9999f, float hVy= -9999f)
     {
 	    
 		int i = -1;
@@ -143,8 +143,14 @@ public class CelestialBody : MonoBehaviour
 		float timeStep =Time.fixedDeltaTime;
 		float time = 0;
 		Vector2 position = transform.position;
-		Vector2 velocity = GetComponent<Rigidbody2D>().velocity==Vector2.zero?GetComponent<StartVelocity>().startVelocity:GetComponent<Rigidbody2D>().velocity;
-		//Vector2 velocity = new Vector2(30,0);
+		Vector2 velocity = new Vector2(hVx, hVy);
+		if (velocity.y == -9999f)
+		{
+
+			velocity = GetComponent<Rigidbody2D>().velocity == Vector2.zero
+				? GetComponent<StartVelocity>().startVelocity
+				: GetComponent<Rigidbody2D>().velocity;
+		} //Vector2 velocity = new Vector2(30,0);
 
 		while (time <= precalculatedMovementTime)
 		{
