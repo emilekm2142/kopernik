@@ -23,7 +23,7 @@ public class CelestialBody : MonoBehaviour
     
     public int TrajectoryPointsInterval = 5;
 
-    private double calculateThisBodyAttraction(GameObject body)
+    public double calculateThisBodyAttraction(GameObject body)
     {
         // Newton's law of gravity G*((Mm)/(r^2))
         var localMultiplier = GameManager.Current.gravityForceScale*multiplier;
@@ -34,7 +34,7 @@ public class CelestialBody : MonoBehaviour
                                       body.gameObject.transform.position), 2)));
         return newtonsForce;
     }
-    private double calculateThisBodyAttraction(Vector2 position, float mass)
+    public double calculateThisBodyAttraction(Vector2 position, float mass)
     {
         // Newton's law of gravity G*((Mm)/(r^2))
         var localMultiplier = GameManager.Current.gravityForceScale*multiplier;
