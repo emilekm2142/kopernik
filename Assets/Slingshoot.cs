@@ -6,6 +6,7 @@ using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = System.Random;
 
 public class Slingshoot : MonoBehaviour
 {
@@ -22,6 +23,15 @@ public class Slingshoot : MonoBehaviour
     void Start()
     {
         celestialBody= GetComponent<CelestialBody>();
+        var spriteCmp = GetComponentInChildren<SpriteRenderer>();
+        if (celestialBody.doesMove)
+        {
+            spriteCmp.transform.localScale *= LevelManager.Current.planetSizeCoefficient+UnityEngine.Random.Range(-LevelManager.Current.planetSizeVariation,LevelManager.Current.planetSizeVariation );
+        }
+
+        var targetScale = spriteCmp.transform.localScale;
+        spriteCmp.transform.localScale = Vector3.zero;
+        spriteCmp.transform.DOScale(targetScale, 1f).SetEase(Ease.OutBack);
         arrowSprite = LevelManager.Current.arrow.GetComponentInChildren<SpriteRenderer>();
     }
 
@@ -53,6 +63,8 @@ public class Slingshoot : MonoBehaviour
                 LevelManager.Current.isAnyBeingDragged = false;
                 LevelManager.Current.Resume();
                 draggedCount++;
+                DOVirtual.Vector3(arrowSprite.transform.localScale, Vector3.zero, 0.1f,
+                    v =>arrowSprite.transform.localScale = v).SetEase(Ease.InBounce);
                 Camera.main.DOShakePosition(0.4f, 0.4f, 10, 90f, true);
             }
         }

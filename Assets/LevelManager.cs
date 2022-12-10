@@ -17,7 +17,8 @@ public class TypeToObject
 }
 public class LevelManager : MonoSingleton<LevelManager>
 {
-	
+	public float planetSizeVariation = 0.1f;
+	public float planetSizeCoefficient = 1;
 	public Volume bloomVolume;
 	public GameObject cat;
 	private List<GameObject> catsList = new List<GameObject>();
@@ -121,7 +122,9 @@ public class LevelManager : MonoSingleton<LevelManager>
 	{
 		while (true)
 		{
+		
 			yield return new WaitForSeconds(3.0f);
+			if (celestialBodies.Count>=6) continue;
 			//get random planet
 			var allowedPlanets = basicPlanets.Where(x => x.canBeSpawned).ToList();
 			GameObject planet = allowedPlanets[Random.Range(0, allowedPlanets.Count)].obj;

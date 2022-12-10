@@ -166,65 +166,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &162751513
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 601793014752850328, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
-      propertyPath: m_Name
-      value: Asteroid02
-      objectReference: {fileID: 0}
-    - target: {fileID: 601793014752850333, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 601793014752850333, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.6412747
-      objectReference: {fileID: 0}
-    - target: {fileID: 601793014752850333, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.1308528
-      objectReference: {fileID: 0}
-    - target: {fileID: 601793014752850333, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.11289
-      objectReference: {fileID: 0}
-    - target: {fileID: 601793014752850333, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 601793014752850333, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 601793014752850333, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 601793014752850333, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 601793014752850333, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 601793014752850333, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 601793014752850333, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c0aa215fd18f44f6ba09f20085aefaf1, type: 3}
 --- !u!1001 &308762545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -234,7 +177,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 353452659584165392, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 353452659584165392, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -558,7 +501,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &875987838
 GameObject:
@@ -608,7 +551,7 @@ Transform:
   m_Children:
   - {fileID: 611797196}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &882177034
 GameObject:
@@ -640,6 +583,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a4f7f7915f2453a8b88e958d46093f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planetSizeVariation: 0.1
+  planetSizeCoefficient: 1.33
   bloomVolume: {fileID: 611797197}
   cat: {fileID: 0}
   currentCat: 0
@@ -660,7 +605,7 @@ MonoBehaviour:
     canBeSpawned: 1
   - type: 7
     obj: {fileID: 601793014752850328, guid: ea7c351b9d616461489ec6434f8be995, type: 3}
-    canBeSpawned: 0
+    canBeSpawned: 1
   - type: 8
     obj: {fileID: 601793014752850328, guid: e638d0ba18a3741b093fa85d8aa6ee9b, type: 3}
     canBeSpawned: 0
@@ -669,7 +614,7 @@ MonoBehaviour:
     canBeSpawned: 1
   - type: 10
     obj: {fileID: 601793014752850328, guid: 5e681b97afe19494880853e2c682c511, type: 3}
-    canBeSpawned: 0
+    canBeSpawned: 1
   - type: 12
     obj: {fileID: 601793014752850328, guid: 513025b7b8d354b07821a7464a373961, type: 3}
     canBeSpawned: 0
@@ -684,15 +629,13 @@ MonoBehaviour:
     canBeSpawned: 0
   spawnPoints:
   - pos: {x: 0, y: 2.6}
-    velocity: {x: 2.2, y: 0}
+    velocity: {x: 2, y: 0}
   - pos: {x: 0, y: 4}
     velocity: {x: 1.6, y: 0}
   - pos: {x: 0, y: 6}
-    velocity: {x: 1, y: 0}
-  - pos: {x: 0, y: 1.5}
-    velocity: {x: 2.7, y: 0}
-  - pos: {x: 0, y: 1.5}
-    velocity: {x: 2.7, y: 0}
+    velocity: {x: 1.3, y: 0}
+  - pos: {x: 0, y: 1.7}
+    velocity: {x: 2.6, y: 0}
   isAnyBeingDragged: 0
   passed: 0
   delaySeconds: 1
@@ -713,7 +656,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &882177037
 MonoBehaviour:
@@ -753,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 601793014752850333, guid: f079285273b6e4c099792b527625752a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 601793014752850333, guid: f079285273b6e4c099792b527625752a, type: 3}
       propertyPath: m_LocalScale.x
@@ -769,7 +712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 601793014752850333, guid: f079285273b6e4c099792b527625752a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.943859
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 601793014752850333, guid: f079285273b6e4c099792b527625752a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -899,7 +842,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1478257540
 GameObject:
@@ -932,7 +875,7 @@ Transform:
   m_Children:
   - {fileID: 1540368861}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1478257542
 BoxCollider:
@@ -1045,6 +988,7 @@ GameObject:
   - component: {fileID: 1561906313}
   - component: {fileID: 1561906312}
   - component: {fileID: 1561906315}
+  - component: {fileID: 1561906316}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -1093,8 +1037,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3e5cdea51c0ae4517854f83b5bca825d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 38e5b883cdeb741229e2ff98fc74eaa8, type: 3}
+  m_Color: {r: 1, g: 0.8254717, b: 0.83493996, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1112,12 +1056,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561906309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.078084, y: 0.09, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.20612484, y: 0.20612484, z: 0.20612484}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1561906312
 MonoBehaviour:
@@ -1188,4 +1132,17 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3.36
+  m_Radius: 3.93
+--- !u!114 &1561906316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561906309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a538e5989d764cceb8b9cfd368617a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rate: 0.01

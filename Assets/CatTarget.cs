@@ -22,7 +22,7 @@ public class CatTarget : MonoBehaviour
             var prevCat = LevelManager.Current.cat;
            // LevelManager.Current.SpawnNewCat(prevCat);
             //tween it
-            x.isDestroyable = false;
+            
             //cat.transform.parent = x.gameObject.transform;
             // DOVirtual.Vector3(cat.transform.localPosition, Vector3.zero + Vector3.right / 6, 1,
             //     v => cat.transform.localPosition = v).SetEase(Ease.InOutSine);

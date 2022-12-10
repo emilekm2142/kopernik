@@ -37,7 +37,8 @@ public class PlanetCollision : MonoBehaviour
             {
                 LevelManager.Current.celestialBodies.Remove(this.gameObject.GetComponent<CelestialBody>());
                 Destroy(this.gameObject);
-                
+                FindObjectOfType<CatMoodService>().SetEye(CatEye.SHOCK);
+                FindObjectOfType<CatMoodService>().SetMouth(CatMouth.Happy);
                 DOVirtual.Float(0, 1, 0.3f, v => LevelManager.Current.bloomVolume.weight = v).SetEase(Ease.OutQuart).SetLoops(2, LoopType.Yoyo);
 
                 return;
@@ -68,10 +69,17 @@ public class PlanetCollision : MonoBehaviour
                 if (FindObjectOfType<CatPositiveNewPlanetSpawns>().planetTypes.Contains(newPlanetType))
                 {
                     FindObjectOfType<CatMoodService>().SetMouth(CatMouth.Happy);
-                    FindObjectOfType<CatMoodService>().SetEye(CatEye.SHOCK);
+                    FindObjectOfType<CatMoodService>().SetEye(CatEye.CUTE);
                 }
-            }
+                FindObjectOfType<CatMoodService>().SetMouth(CatMouth.Happy);
 
+                FindObjectOfType<CatMoodService>().SetEye(CatEye.CUTE);
+            }
+            else
+            {
+                FindObjectOfType<CatMoodService>().SetMouth(CatMouth.Sad);
+                FindObjectOfType<CatMoodService>().SetEye(CatEye.ANGRY);
+            }
             SpawnParticles();
             if (isDestroyable) Destroy(gameObject);
            if (col.gameObject.GetComponent<PlanetCollision>().isDestroyable) Destroy(col.gameObject);
