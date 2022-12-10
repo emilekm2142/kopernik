@@ -1,63 +1,72 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 public class CatMoodService : MonoBehaviour
 {
 
     public GameObject eyeGameObject;
+    public GameObject mouthGameObject;
+    public GameObject whimGameObject;
     
-    public Sprite cuteSprite;
-    public Sprite shockSprite;
-    public Sprite angrySprite;
+    public Sprite eyeCuteSprite;
+    public Sprite eyeShockSprite;
+    public Sprite eyeAngrySprite;
+    
+    public Sprite mouthHappySprite;
+    public Sprite mouthNeutralSprite;
+    public Sprite mouthSadSprite;
+   
+    public Sprite whimAppleSprite;
+    public Sprite whimTreeSprite;
+    public Sprite whimMushroomSprite;
+    
+    public int coutdownSecond = 5;
 
-    public int secToCute = 5; 
+    [HideInInspector]
+    private CoutdownTimer eyeTimer = new CoutdownTimer();
+
+    [HideInInspector]
+    private CoutdownTimer mouthTimer = new CoutdownTimer();
     
-    [HideInInspector]
-    float timeRemaining = 0;
-    [HideInInspector]
-    private bool isTimerCoutdown = false;
 
     private void Start()
     {
-        
+        eyeTimer.SetDefaultCoutdown(coutdownSecond);
+        mouthTimer.SetDefaultCoutdown(coutdownSecond);
     }
 
     private void StartTimer()
     {
-        isTimerCoutdown = true;
-        timeRemaining = secToCute;
+        eyeTimer.StartTimer();
+        mouthTimer.StartTimer();
     }
 
     void Update()
     {
-        if (isTimerCoutdown)
-        {
-            if (timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-                return;
-            }
-            SetEye(CatEye.CUTE);
-            isTimerCoutdown = false;
-        }
+        if (eyeTimer.isInUse())
+            if(eyeTimer.Update()) SetEye(CatEye.CUTE);
+        if (mouthTimer.isInUse())
+            if(eyeTimer.Update()) SetMouth(CatMouth.Neutral);
     }
     
-    
-    public virtual void SetMood(CatMood _catMood)
+    public virtual void SetMouth(CatMouth _catMouth)
     {
-        switch (_catMood)
+        switch (_catMouth)
         {
-            case CatMood.MOVE_LEFT:
-                Debug.Log("Make move left");
+            case CatMouth.Happy:
+                mouthGameObject.GetComponent<SpriteRenderer>().sprite = mouthHappySprite;  
                 break;
-            
-            case CatMood.HAPPY:
-                Debug.Log("Make Happy");
+            case CatMouth.Neutral:
+                mouthGameObject.GetComponent<SpriteRenderer>().sprite = mouthNeutralSprite;
+                break;
+            case CatMouth.Sad:
+                mouthGameObject.GetComponent<SpriteRenderer>().sprite = mouthSadSprite;
                 break;
         }
-        
+        StartTimer();
     }
 
     public virtual void SetEye(CatEye _catEye)
@@ -65,16 +74,32 @@ public class CatMoodService : MonoBehaviour
         switch (_catEye)
         {
             case CatEye.CUTE:
-                eyeGameObject.GetComponent<SpriteRenderer>().sprite = cuteSprite;  
+                eyeGameObject.GetComponent<SpriteRenderer>().sprite = eyeCuteSprite;  
                 break;
             case CatEye.ANGRY:
-                eyeGameObject.GetComponent<SpriteRenderer>().sprite = angrySprite;
+                eyeGameObject.GetComponent<SpriteRenderer>().sprite = eyeAngrySprite;
                 break;
             case CatEye.SHOCK:
-                eyeGameObject.GetComponent<SpriteRenderer>().sprite = shockSprite;
+                eyeGameObject.GetComponent<SpriteRenderer>().sprite = eyeShockSprite;
                 break;
         }
         StartTimer();
+    }
+
+    public virtual void SetWhim(WhimEnum _whimEnum)
+    {
+        switch (_whimEnum)
+        {
+            case WhimEnum.Apple:
+                whimGameObject.GetComponent<SpriteRenderer>().sprite = whimAppleSprite;
+                break;
+            case WhimEnum.Mushrom:
+                whimGameObject.GetComponent<SpriteRenderer>().sprite = whimMushroomSprite;
+                break;
+            case WhimEnum.TreeSapling:
+                whimGameObject.GetComponent<SpriteRenderer>().sprite = whimTreeSprite;
+                break;
+        }
     }
     
 }

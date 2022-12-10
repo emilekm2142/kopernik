@@ -67,7 +67,8 @@ public class PlanetCollision : MonoBehaviour
                 LevelManager.Current.celestialBodies.Add(newInstance.GetComponent<CelestialBody>());
                 if (FindObjectOfType<CatPositiveNewPlanetSpawns>().planetTypes.Contains(newPlanetType))
                 {
-                    FindObjectOfType<CatMoodService>().SetMood(CatMood.HAPPY);
+                    FindObjectOfType<CatMoodService>().SetMouth(CatMouth.Happy);
+                    FindObjectOfType<CatMoodService>().SetEye(CatEye.SHOCK);
                 }
             }
 
