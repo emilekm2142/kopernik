@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30123fc6-775e-418b-bbef-c91af63263d8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Cat/WhimEnum.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Cat/WhimEnum.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.kopernik/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.kopernik/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Cat.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cat.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Cat/CatController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cat/CatController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Cat/CatMoodService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cat/CatMoodService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Cat/CatObject.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cat/CatObject.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Marta/PlanetController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Marta/PlanetService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Marta/PlanetController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Marta/PlanetService.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Marta/TestMarta.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Marta/TestMarta.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +93,7 @@
       <workItem from="1670669804452" duration="57000" />
       <workItem from="1670669920872" duration="10027000" />
       <workItem from="1670693000643" duration="1741000" />
-      <workItem from="1670698572516" duration="4519000" />
+      <workItem from="1670698572516" duration="7863000" />
     </task>
     <servers />
   </component>
