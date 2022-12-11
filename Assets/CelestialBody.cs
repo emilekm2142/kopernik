@@ -13,6 +13,8 @@ public class LinePoint
 }
 public class CelestialBody : MonoBehaviour
 {
+	
+	
     private List<LinePoint> trajectoryPoints = new List<LinePoint>();
     public float precalculatedMovementTime = 3f;
     public bool doesMove = true;
@@ -233,12 +235,14 @@ public class CelestialBody : MonoBehaviour
     
     public void DoStep()
     {
+	 
 	    _rigidbody.position = trajectoryPoints[0].pos;
 	    //	Debug.Log(String.Format("{0}; {1}", trajectoryPoints[i].pos,trajectoryPoints[i].velocity));
 	    _rigidbody.velocity = trajectoryPoints[0].velocity;
 	    this.RemoveCurrentStep();
 	    this.CalculateSingleNextPoint();
 	     stepsCalculatedCounter++;
+
     }
     // Start is called before the first frame update
     void Start()

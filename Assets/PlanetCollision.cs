@@ -10,6 +10,7 @@ using UnityEngine.Rendering.Universal;
 
 public class PlanetCollision : MonoBehaviour
 {
+    public bool isDestroyable = true;
     public bool isColliding = false;
     public PlanetTypes planetType;
     CelestialBody celestialBody;
@@ -32,11 +33,23 @@ public class PlanetCollision : MonoBehaviour
       //if col has component CelestialBody, then get the planet type
         if (col.gameObject.GetComponent<CelestialBody>() != null && !isColliding)
         {
+            if (col.gameObject.GetComponent<Sun>() != null)
+            {
+                LevelManager.Current.celestialBodies.Remove(this.gameObject.GetComponent<CelestialBody>());
+                Destroy(this.gameObject);
+                FindObjectOfType<CatMoodService>().SetEye(CatEye.SHOCK);
+                FindObjectOfType<CatMoodService>().SetMouth(CatMouth.Happy);
+                DOVirtual.Float(0, 1, 0.3f, v => LevelManager.Current.bloomVolume.weight = v).SetEase(Ease.OutQuart).SetLoops(2, LoopType.Yoyo);
+
+                return;
+            }
+
             Debug.Log("collision...");
             isColliding = true;
             col.gameObject.GetComponent<PlanetCollision>().isColliding = true;
-            planetType = col.gameObject.GetComponent<PlanetCollision>().planetType;
-            var newPlanetType = PlanetCollisionsStore.GetNewPlanetType(this.planetType, planetType);
+            var otherPlanetType = col.gameObject.GetComponent<PlanetCollision>().planetType;
+            var newPlanetType = PlanetCollisionsStore.GetNewPlanetType(this.planetType, otherPlanetType);
+            Debug.Log(newPlanetType);
             if (newPlanetType != PlanetTypes.None)
             {
                 var newPlanetPrefab = LevelManager.Current.basicPlanets.First(x => x.type == newPlanetType).obj;
@@ -56,29 +69,26 @@ public class PlanetCollision : MonoBehaviour
                 if (FindObjectOfType<CatPositiveNewPlanetSpawns>().planetTypes.Contains(newPlanetType))
                 {
                     FindObjectOfType<CatMoodService>().SetMouth(CatMouth.Happy);
-                    FindObjectOfType<CatMoodService>().SetEye(CatEye.SHOCK);
+                    FindObjectOfType<CatMoodService>().SetEye(CatEye.CUTE);
                 }
-            }
+                FindObjectOfType<CatMoodService>().SetMouth(CatMouth.Happy);
 
+                FindObjectOfType<CatMoodService>().SetEye(CatEye.CUTE);
+            }
+            else
+            {
+                FindObjectOfType<CatMoodService>().SetMouth(CatMouth.Sad);
+                FindObjectOfType<CatMoodService>().SetEye(CatEye.ANGRY);
+            }
             SpawnParticles();
-            Destroy(gameObject);
-            Destroy(col.gameObject);
+            if (isDestroyable) Destroy(gameObject);
+           if (col.gameObject.GetComponent<PlanetCollision>().isDestroyable) Destroy(col.gameObject);
 
             DOVirtual.Float(0, 1, 0.1f, v => LevelManager.Current.bloomVolume.weight = v).SetEase(Ease.OutQuart).SetLoops(2, LoopType.Yoyo);
             Camera.main.DOShakePosition(0.2f, 1f, 10, 90f, true);
-            // col.gameObject.GetComponent<Explodable>().explode();
-            // gameObject.GetComponent<Explodable>().explode();
-            // foreach (var fragment in gameObject.GetComponent<Explodable>().fragments)
-            // {
-            //
-            //     AddExplosionForce(fragment.GetComponent<Rigidbody2D>(),
-            //         1, col.contacts[0].point, 15);
-					       //
-            // }
-            //
-       //     LevelManager.Current.UpdateCelestialBodiesListFromScene();
-            LevelManager.Current.celestialBodies.Remove(this.gameObject.GetComponent<CelestialBody>());
-            LevelManager.Current.celestialBodies.Remove(col.gameObject.GetComponent<CelestialBody>());
+        
+       if (isDestroyable)  LevelManager.Current.celestialBodies.Remove(this.gameObject.GetComponent<CelestialBody>());
+       if (col.gameObject.GetComponent<PlanetCollision>().isDestroyable)    LevelManager.Current.celestialBodies.Remove(col.gameObject.GetComponent<CelestialBody>());
             LevelManager.Current.GetComponent<CatTarget>().ScanIfWon();
           
         }

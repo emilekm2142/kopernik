@@ -10,11 +10,15 @@ using UnityEngine.Rendering;
 [System.Serializable]
 public class TypeToObject
 {
+	
 	public PlanetTypes type;
 	public GameObject obj;
+	public bool canBeSpawned=false;
 }
 public class LevelManager : MonoSingleton<LevelManager>
 {
+	public float planetSizeVariation = 0.1f;
+	public float planetSizeCoefficient = 1;
 	public Volume bloomVolume;
 	public GameObject cat;
 	private List<GameObject> catsList = new List<GameObject>();
@@ -27,6 +31,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 	public bool isAnyBeingDragged = false;
 	public float passed = 0;
 	public float delaySeconds = 4;
+	public Sun sun;
 	public bool isPaused=false;
     // Start is called before the first frame update
     public void MoveObjects()
@@ -59,9 +64,23 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     public void SpawnNewCat(GameObject lastCat)
     {
-	    var catPrefab = catsList[currentCat];
-	    cat = Instantiate(catPrefab, lastCat.transform.position, Quaternion.identity);
 	    currentCat++;
+	    if (currentCat > 1)
+	    {
+		    currentCat = 0;
+	    }
+	    if (currentCat == 0)
+	    {
+		    FindObjectOfType<CatMoodService>().SetWhim(WhimEnum.Mushrom);
+		    FindObjectOfType<CatTarget>().targetPlanetType = PlanetTypes.PlanetOfMushrooms;
+	    }
+	    if (currentCat == 1)
+	    {
+		    FindObjectOfType<CatMoodService>().SetWhim(WhimEnum.TreeSapling);
+		    FindObjectOfType<CatTarget>().targetPlanetType = PlanetTypes.RockGrassTree;
+	    }
+	    
+	   
     }
 	void Update()
 	{
@@ -100,27 +119,56 @@ public class LevelManager : MonoSingleton<LevelManager>
 	{
 		UpdateCelestialBodiesListFromScene();
 		RecalculateTrajectory();
+		this.sun = FindObjectOfType<Sun>();
 		cat = FindObjectOfType<CatMovement>().gameObject;
 		StartCoroutine(SpawningCoroutine());
+		FindObjectOfType<CatMoodService>().SetWhim(WhimEnum.Mushrom);
 		//GameObject.FindObjectOfType<GameManager>().ShowEndCampaignRewardScreen(100);
 
 	}
-
+	private LinePoint lastSpawnPoint=null;
+	private GameObject lastPlanetSpawned=null;
 	private IEnumerator SpawningCoroutine()
 	{
 		while (true)
 		{
+		
+			yield return new WaitForSeconds(3.0f);
+			if (celestialBodies.Count>=6) continue;
 			//get random planet
-			GameObject planet = basicPlanets[Random.Range(0, basicPlanets.Count)].obj;
+			var allowedPlanets = basicPlanets.Where(x => x.canBeSpawned).ToList();
+			GameObject planet = allowedPlanets[Random.Range(0, allowedPlanets.Count)].obj;
 			LinePoint spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
-			while (!planetsSpawned.Select(x => x.Item1).All(x => spawnPoints.Contains(x)) && planetsSpawned.Select(x=>x.Item1).Contains(spawnPoint))
+			while (true)
+			{
+				planet = allowedPlanets[Random.Range(0, allowedPlanets.Count)].obj;
+				if (lastPlanetSpawned!=planet){
+					break;
+				}
+				else
+				{
+					continue;
+				}
+			}
+			while (true)
 			{
 				spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+				if (spawnPoint != lastSpawnPoint)
+				{
+					break;
+				}
+				else
+				{
+					continue;
+				}
 			}
+			Debug.Log(spawnPoint.pos);
+			lastSpawnPoint = spawnPoint;
+			lastPlanetSpawned = planet;
 			if (!isPaused)
 				this.SpawnNewPlanet(planet, spawnPoint);
 			// Wait for 10 seconds before calling the coroutine again
-			yield return new WaitForSeconds(10.0f);
+			
 		}
 	}
 	private Vector2 CalculateOrbitalVelocity(float gravitationalForce, Vector2 sunPosition, Vector2 planetPosition, float sunMass, float G)
