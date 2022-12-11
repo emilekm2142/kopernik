@@ -1064,14 +1064,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 751861283, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 751861283, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
-      propertyPath: BypassReverbZones
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 353452659584165392, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1120,21 +1112,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cat_01
       objectReference: {fileID: 0}
-    - target: {fileID: 353452659584165423, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
-      propertyPath: soundClip1
-      value: 
-      objectReference: {fileID: 8300000, guid: 42cf1452ae34f4ef193d9a5955488004, type: 3}
-    - target: {fileID: 353452659584165423, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
-      propertyPath: soundClip2
-      value: 
-      objectReference: {fileID: 8300000, guid: 62db96596668e488f8c92f82443b808b, type: 3}
-    - target: {fileID: 353452659584165423, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
-      propertyPath: soundClip3
-      value: 
-      objectReference: {fileID: 8300000, guid: 5aafbb870baf443638e99f58bd418e6f, type: 3}
-    - target: {fileID: 353452659584165423, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}
-      propertyPath: soundClip4
-      value: 
-      objectReference: {fileID: 8300000, guid: 879db6bcc71e14c05bebd8e805231737, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff2a6a0d3147040e08c92f710c44f1d3, type: 3}

@@ -18,5 +18,7 @@ public class PlanetService : MonoBehaviour
     void Update()
     {
        // Camera.main.transform.position = pointAround;
+       
+       Camera.main.transform.position = new Vector3 (pointAround.x,pointAround.y, Camera.main.transform.position.z);
     }
 }
