@@ -17,6 +17,9 @@ public class TypeToObject
 }
 public class LevelManager : MonoSingleton<LevelManager>
 {
+	public Texture2D cursorTexture;
+	public Texture2D cursorTextureDown;
+	
 	public AudioEffectsController audioEffectsController;
 	public float planetSizeVariation = 0.1f;
 	public float planetSizeCoefficient = 1;

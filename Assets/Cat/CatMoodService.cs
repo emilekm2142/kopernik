@@ -86,9 +86,11 @@ public class CatMoodService : MonoBehaviour
                 break;
             case CatEye.ANGRY:
                 eyeGameObject.GetComponent<SpriteRenderer>().sprite = eyeAngrySprite;
+                PlaySound();
                 break;
             case CatEye.SHOCK:
                 eyeGameObject.GetComponent<SpriteRenderer>().sprite = eyeShockSprite;
+                PlaySound();
                 break;
         }
         StartTimer();

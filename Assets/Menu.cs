@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    public Texture2D cursorTexture;
     private AudioClip menu;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //set cursor
+     //   Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
     }
 
     public void Play()

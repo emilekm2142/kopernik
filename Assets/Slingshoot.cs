@@ -22,6 +22,8 @@ public class Slingshoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      //  UnityEngine.Cursor.SetCursor(LevelManager.Current.cursorTexture, Vector2.zero, CursorMode.Auto);
+
         celestialBody= GetComponent<CelestialBody>();
         var spriteCmp = GetComponentInChildren<SpriteRenderer>();
         if (celestialBody.doesMove)
@@ -51,6 +53,8 @@ public class Slingshoot : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1) &&LevelManager.Current.isPaused)
         {
+       //     UnityEngine.Cursor.SetCursor(LevelManager.Current.cursorTexture, Vector2.zero, CursorMode.Auto);
+
             isBeingDragged = false;
             LevelManager.Current.isAnyBeingDragged = false;
             celestialBody.RecalculateTrajectory(true);
@@ -59,6 +63,7 @@ public class Slingshoot : MonoBehaviour
         {
             if (LevelManager.Current.isAnyBeingDragged && isBeingDragged)
             {
+             //   UnityEngine.Cursor.SetCursor(LevelManager.Current.cursorTexture, Vector2.zero, CursorMode.Auto);
                 isBeingDragged = false;
                 LevelManager.Current.isAnyBeingDragged = false;
                 LevelManager.Current.Resume();
@@ -71,6 +76,7 @@ public class Slingshoot : MonoBehaviour
 
         if (Input.GetMouseButton(0) && isBeingDragged && LevelManager.Current.isPaused )
         {
+    
             //get mouse world position
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //get direction
@@ -106,6 +112,8 @@ public class Slingshoot : MonoBehaviour
     {
         if (LevelManager.Current.isAnyBeingDragged == false && LevelManager.Current.isPaused)
         {
+         //   UnityEngine.Cursor.SetCursor(LevelManager.Current.cursorTextureDown, Vector2.zero, CursorMode.Auto);
+
             startMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             isBeingDragged = true;
             LevelManager.Current.isAnyBeingDragged = true;
