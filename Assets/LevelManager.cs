@@ -6,6 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using DG.Tweening;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class TypeToObject
@@ -19,7 +20,8 @@ public class LevelManager : MonoSingleton<LevelManager>
 {
 	public Texture2D cursorTexture;
 	public Texture2D cursorTextureDown;
-	
+	public Sprite cat0Instructions;
+	public Sprite cat1Instructions;
 	public AudioEffectsController audioEffectsController;
 	public float planetSizeVariation = 0.1f;
 	public float planetSizeCoefficient = 1;
@@ -69,6 +71,7 @@ public class LevelManager : MonoSingleton<LevelManager>
     public void SpawnNewCat(GameObject lastCat)
     {
 	    currentCat++;
+	    
 	    if (currentCat > 1)
 	    {
 		    currentCat = 0;
@@ -77,11 +80,13 @@ public class LevelManager : MonoSingleton<LevelManager>
 	    {
 		    FindObjectOfType<CatMoodService>().SetWhim(WhimEnum.Mushrom);
 		    FindObjectOfType<CatTarget>().targetPlanetType = PlanetTypes.PlanetOfMushrooms;
+		    GameObject.Find("help").GetComponent<SpriteRenderer>().sprite = cat0Instructions;
 	    }
 	    if (currentCat == 1)
 	    {
 		    FindObjectOfType<CatMoodService>().SetWhim(WhimEnum.TreeSapling);
 		    FindObjectOfType<CatTarget>().targetPlanetType = PlanetTypes.RockGrassTree;
+		    GameObject.Find("help").GetComponent<SpriteRenderer>().sprite = cat1Instructions;
 	    }
 	    
 	   
@@ -92,7 +97,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 		{
 			Pause();
 		}
-
+		
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			TogglePause();
@@ -100,8 +105,8 @@ public class LevelManager : MonoSingleton<LevelManager>
 
 		if (Input.GetKeyDown(KeyCode.A))
 		{
-			//get random spawn point
-		
+			SceneManager.LoadScene(2, LoadSceneMode.Single);
+
 		}
 
 		
