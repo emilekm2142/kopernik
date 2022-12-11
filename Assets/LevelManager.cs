@@ -104,11 +104,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 		
 		}
 
-		if (   (Input.GetKeyDown("space")||Input.GetKeyDown(KeyCode.Pause)) && !Application.isEditor)
-		{
-			TogglePause();
-			
-		}
+		
 		
 	}
 
