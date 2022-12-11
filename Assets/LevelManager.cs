@@ -17,6 +17,7 @@ public class TypeToObject
 }
 public class LevelManager : MonoSingleton<LevelManager>
 {
+	public AudioEffectsController audioEffectsController;
 	public float planetSizeVariation = 0.1f;
 	public float planetSizeCoefficient = 1;
 	public Volume bloomVolume;
@@ -117,6 +118,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 	}
 	private void Start()
 	{
+		this.audioEffectsController = GetComponent<AudioEffectsController>();
 		UpdateCelestialBodiesListFromScene();
 		RecalculateTrajectory();
 		this.sun = FindObjectOfType<Sun>();

@@ -43,6 +43,7 @@ public class PlanetCollision : MonoBehaviour
 
                 return;
             }
+            LevelManager.Current.audioEffectsController.PlayPlanetCollide();
 
             Debug.Log("collision...");
             isColliding = true;
