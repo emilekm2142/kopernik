@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="30123fc6-775e-418b-bbef-c91af63263d8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.kopernik/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.kopernik/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Cat.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cat.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Cat/CatObject.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cat/CatObject.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Marta/PlanetService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Marta/PlanetService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Marta/TestMarta.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Marta/TestMarta.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +94,7 @@
       <workItem from="1670669920872" duration="10027000" />
       <workItem from="1670693000643" duration="1741000" />
       <workItem from="1670698572516" duration="11463000" />
-      <workItem from="1670715932970" duration="1727000" />
+      <workItem from="1670715932970" duration="4412000" />
     </task>
     <servers />
   </component>
